@@ -1,0 +1,85 @@
+.leftSideContainer {
+    display: flex;
+    margin-top: 30px;
+}
+
+.leftSide {
+    margin-left: 23px;
+    color: #25182E;
+    width: 100%;
+
+    p:nth-child(1) {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    img {
+        &:hover {
+            background: #F5F5F5;
+            border-radius: 13px;
+        }
+    }
+}
+
+.image {
+    width: 50%;
+    border-radius: 13px;
+}
+
+.messageActions {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 17px;
+    margin-top: 10px;
+
+    svg {
+        margin-right: 10px;
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+    }
+
+    p {
+        font-size: 18px !important;
+        font-weight: 300 !important;
+    }
+
+    &:hover {
+        background: #F5F5F5;
+        padding: 5px;
+        border-radius: 13px;
+        transition: all 0.3s ease-in-out !important;
+    }
+}
+
+.imageMessageActions {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    svg {
+        margin-right: 10px;
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+    }
+
+    &:hover {
+        background: #F5F5F5;
+        border-radius: 13px;
+        transition: all 0.3s ease-in-out !important;
+    }
+}
+
+.skeletonLeftSide {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.skeleton {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

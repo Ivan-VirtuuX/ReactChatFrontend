@@ -1,0 +1,303 @@
+.container {
+  position: relative;
+  display: flex;
+
+  @media(max-width: 1200px) {
+    flex-direction: column;
+  }
+}
+
+.leftSide {
+  width: 960px;
+  height: 100vh;
+  background-color: #25182E;
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+
+  @media(max-width: 1200px) {
+    height: 300px;
+    width: 100%;
+  }
+
+  p:nth-child(1) {
+    font-size: 73px;
+    color: white;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  p:nth-child(2) {
+    font-size: 158px;
+    color: #FFBE00;
+    transition: all 0.3s ease-in-out;
+  }
+
+  @media(max-width:1750px) {
+    p:nth-child(1) {
+      font-size: 68px;
+    }
+
+    p:nth-child(2) {
+      font-size: 148px;
+    }
+  }
+
+  @media(max-width:1600px) {
+    p:nth-child(1) {
+      font-size: 63px;
+    }
+
+    p:nth-child(2) {
+      font-size: 138px;
+    }
+  }
+
+  @media(max-width:1500px) {
+    p:nth-child(1) {
+      font-size: 58px;
+    }
+
+    p:nth-child(2) {
+      font-size: 128px;
+    }
+  }
+
+  @media(max-width:1400px) {
+    p:nth-child(1) {
+      font-size: 54px;
+    }
+
+    p:nth-child(2) {
+      font-size: 118px;
+    }
+  }
+
+  @media(max-width:1300px) {
+    p:nth-child(1) {
+      font-size: 49px;
+    }
+
+    p:nth-child(2) {
+      font-size: 108px;
+    }
+  }
+
+  @media(max-width:1200px) {
+    p:nth-child(1) {
+      font-size: 44px;
+    }
+
+    p:nth-child(2) {
+      font-size: 98px;
+    }
+  }
+
+  @media(max-width:550px) {
+    p:nth-child(1) {
+      font-size: 40px;
+    }
+
+    p:nth-child(2) {
+      font-size: 88px;
+    }
+  }
+
+  @media(max-width:460px) {
+    p:nth-child(1) {
+      font-size: 35px;
+    }
+
+    p:nth-child(2) {
+      font-size: 78px;
+    }
+  }
+
+  @media(max-width:420px) {
+    p:nth-child(1) {
+      font-size: 31px;
+    }
+
+    p:nth-child(2) {
+      font-size: 68px;
+    }
+  }
+}
+
+.rightSide {
+  width: 960px;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.passwordInputContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    position: absolute;
+    right: 0;
+    margin-right: 22px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+}
+
+.formActions {
+  margin-top: 45px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+
+  button:nth-child(1) {
+    font-size: 30px;
+    font-weight: 300;
+    color: rgba(37, 24, 46, 0.5);
+
+    &:hover {
+      color: #25182E;
+    }
+  }
+
+  button:nth-child(2) {
+    border-radius: 17px;
+    font-size: 30px;
+    font-weight: 300;
+    width: 145px;
+    height: 59px;
+    background-color: #25182E;
+    color: white;
+
+    &:hover {
+      background-color: #CA1F3D;
+    }
+
+    &:disabled {
+      background-color: #D4D4D4;
+      color: #929292;
+    }
+  }
+}
+
+.registerFormActions {
+  margin-top: 45px;
+  display: flex;
+  justify-content: space-between;
+  width: 445px;
+
+  button {
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+
+  button:nth-child(1) {
+    font-size: 30px;
+    font-weight: 300;
+    color: rgba(37, 24, 46, 0.5);
+
+    &:hover {
+      color: #25182E;
+    }
+  }
+
+  button:nth-child(2) {
+    border-radius: 17px;
+    font-size: 30px;
+    font-weight: 300;
+    width: 292px;
+    height: 59px;
+    background-color: #25182E;
+    color: white;
+
+    &:hover {
+      background-color: #CA1F3D;
+    }
+
+    &:disabled {
+      background-color: #D4D4D4;
+      color: #929292;
+    }
+  }
+}
+
+.registerPasswordInputContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  svg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 42px;
+    margin-right: 22px;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 70px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #25182E;
+  }
+
+  input {
+    width: 445px;
+    height: 68px;
+    background-color: #FFFFFF;
+    color: #25182E;
+    border: 2px solid #25182E;
+    border-radius: 20px;
+    margin-top: 20px;
+    font-size: 34px;
+    padding-left: 22px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      &::placeholder {
+        color: #25182E;
+      }
+    }
+
+    &::placeholder {
+      font-weight: 300;
+      margin-left: 22px;
+      color: rgba(37, 24, 46, 0.5);
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:focus {
+      background-color: #25182E;
+      color: white;
+      caret-color: white;
+
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+}
+
+.passwordField,
+.secondPasswordField {
+  position: relative;
+}

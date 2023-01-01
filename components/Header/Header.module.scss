@@ -1,0 +1,134 @@
+.header {
+    width: 100%;
+    height: 75px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px -3px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+
+    @media(max-width: 1625px) {
+        padding-left: 20px;
+        padding-right: 30px;
+    }
+}
+
+.headerContainer {
+    width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div:nth-child(1) {
+        display: flex;
+    }
+
+    p {
+        font-size: 21px;
+        color: #25182E;
+        font-weight: 700;
+    }
+}
+
+.user {
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-left: 20px;
+        cursor: pointer;
+
+        path {
+            transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+            path {
+                stroke: #CA1F3D;
+            }
+        }
+    }
+}
+
+.input {
+    position: relative;
+
+    i {
+        position: absolute;
+        left: 0;
+        margin-top: 9px;
+        margin-left: 29px;
+    }
+}
+
+.search {
+    margin-left: 20px;
+    background: #EAEAEA;
+    border-radius: 8px;
+    width: 200px;
+    height: 29px;
+    padding-left: 27px;
+    color: #AAAAAA;
+    caret-color: #AAAAAA;
+    font-size: 15px;
+    transition: all 0.2s ease-in-out;
+
+    &::placeholder {
+        color: #AAAAAA;
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+    &:hover {
+        background: #F3F3F3;
+    }
+
+    &:focus {
+        background: #F3F3F3;
+    }
+
+    @media (max-width: 430px) {
+        width: 80px;
+    }
+}
+
+.searchBlockPopup {
+    position: absolute !important;
+    top: 40px;
+    width: 200px;
+    z-index: 1000 !important;
+    margin-left: 20px;
+    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.07);
+    border-radius: 8px !important;
+    overflow-y: auto;
+    height: 200px;
+
+    &::-webkit-scrollbar {
+        background: #EAEAEA;
+        border-radius: 20px;
+        width: 6px;
+
+        &-thumb {
+            background: #25182E;
+            border-radius: 20px;
+        }
+    }
+
+    a {
+        color: #AAAAAA !important;
+    }
+
+    hr {
+        height: 0.5px;
+        background: #EFEFEF;
+    }
+}
+
+.bgOverlay {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+}

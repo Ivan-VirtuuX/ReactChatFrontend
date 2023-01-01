@@ -1,0 +1,15 @@
+.passwordInputContainer {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        position: absolute;
+        right: 0;
+        margin-right: 22px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+}

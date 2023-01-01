@@ -1,0 +1,179 @@
+.rightSide {
+    width: 960px;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: #25182E;
+        margin-bottom: 20px;
+    }
+
+    div {
+        width: 445px;
+    }
+
+    form {
+        div {
+            width: 460px;
+            display: flex;
+
+            @media(max-width: 550px) {
+                width: 100%;
+            }
+
+            label {
+                color: rgba(37, 24, 46, 0.5) !important;
+                font-size: 20px !important;
+                font-family: "Nunito";
+            }
+
+            div {
+                &::before {
+                    display: none !important;
+                }
+
+                &::after {
+                    border-bottom: 2px solid #25182E !important;
+                }
+            }
+        }
+
+        div:nth-child(2) {
+            font-size: 20px !important;
+            margin-bottom: 15px;
+            margin-top: 15px;
+
+            p {
+                font-size: 20px !important;
+            }
+        }
+
+        div:nth-child(3) {
+            margin-bottom: 15px;
+        }
+
+        p {
+            transition: all 0.3s ease-in-out;
+
+            @media(max-width: 550px) {
+                font-size: 60px !important;
+            }
+
+            @media(max-width: 415px) {
+                font-size: 53px !important;
+            }
+        }
+    }
+
+    @media(max-width: 1200px) {
+        width: 100%;
+        margin: 0 auto;
+        justify-content: flex-start;
+        margin-top: 60px;
+    }
+}
+
+.formActions {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        text-transform: initial !important;
+    }
+
+    button {
+        background-color: transparent;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: transparent !important;
+        }
+    }
+
+    button:nth-child(1) {
+        font-size: 30px;
+        font-weight: 300;
+        color: rgba(37, 24, 46, 0.5);
+        padding: 0;
+
+        &:hover {
+            color: #25182E;
+        }
+
+        &:focus {
+            span {
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    button:nth-child(2) {
+        border-radius: 17px;
+        font-size: 30px;
+        font-weight: 300;
+        width: 292px;
+        height: 59px;
+        background-color: #25182E;
+        color: white;
+
+        &:hover {
+            background-color: #CA1F3D !important;
+        }
+
+        &:disabled {
+            background-color: #D4D4D4 !important;
+            color: #929292 !important;
+        }
+
+        @media(max-width: 550px) {
+            width: 200px;
+            font-size: 20px;
+        }
+    }
+}
+
+.registerFormActions {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+    width: 445px;
+
+    button {
+        background-color: transparent;
+        transition: all 0.2s ease-in-out;
+    }
+
+    button:nth-child(1) {
+        font-size: 30px !important;
+        font-weight: 300 !important;
+        color: rgba(37, 24, 46, 0.5) !important;
+
+        &:hover {
+            color: #25182E !important;
+        }
+    }
+
+    button:nth-child(2) {
+        border-radius: 17px !important;
+        font-size: 30px !important;
+        font-weight: 300 !important;
+        width: 292px !important;
+        height: 59px !important;
+        background-color: #25182E !important;
+        color: white !important;
+
+        &:hover {
+            background-color: #CA1F3D;
+        }
+
+        &:disabled {
+            background-color: #D4D4D4;
+            color: #929292;
+        }
+    }
+}
