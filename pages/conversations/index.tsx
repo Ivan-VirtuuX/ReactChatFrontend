@@ -4,9 +4,7 @@ import { NextPage } from 'next/types';
 import { useEffect } from 'react';
 import ConversationsLayout from '../../components/Layouts/ConversationsLayout';
 import { useAppSelector } from '../../redux/hooks';
-import { selectUserData, setUserData } from '../../redux/slices/user';
-import { store } from '../../redux/store';
-import { Api } from '../../utils/api';
+import { selectUserData } from '../../redux/slices/user';
 import styles from './Conversations.module.scss';
 
 const Conversations: NextPage = () => {
@@ -39,20 +37,6 @@ const Conversations: NextPage = () => {
       </div>
     </div>
   );
-};
-
-export const getServerSideProps = async () => {
-  try {
-    const userData = await Api().user.getMe();
-
-    store.dispatch(setUserData(userData));
-
-    return {
-      props: {},
-    };
-  } catch (err) {
-    console.warn(err);
-  }
 };
 
 export default Conversations;
