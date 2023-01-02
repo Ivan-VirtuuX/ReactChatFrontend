@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useConversations } from '../../../hooks/useConversations';
 import { useMessages } from '../../../hooks/useMessages';
+import { Api } from '../../../utils/api';
 import { Conversation } from '../../Conversation';
 import { ConversationSkeleton } from '../../Conversation/ConversationSkeleton';
 import styles from './ConversationsLayout.module.scss';
@@ -59,15 +60,13 @@ const ConversationsLayout: FC<ConversationLayoutProps> = ({ onUpdateConversation
       <div className={styles.conversations}>
         {!keyword
           ? isLoading
-            ? [...Array(5)].map(() => <ConversationSkeleton />)
+            ? [...Array(5)].map((_, index) => <ConversationSkeleton key={index} />)
             : conversations.map((obj) => (
-                <>
-                  <Conversation
-                    key={obj.conversationId}
-                    {...obj}
-                    onUpdateConversation={onUpdateConversation}
-                  />
-                </>
+                <Conversation
+                  key={obj.conversationId}
+                  {...obj}
+                  onUpdateConversation={onUpdateConversation}
+                />
               ))
           : conversations.map((obj) => {
               const msgText = messages.filter(

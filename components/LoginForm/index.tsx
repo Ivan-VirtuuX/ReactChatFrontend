@@ -38,7 +38,9 @@ export const LoginForm: FC<LoginFormProps> = ({ onOpenRegister }) => {
         path: '/',
       });
       setErrorMessage('');
+
       dispatch(setUserData(data));
+
       router.push('/conversations');
     } catch (err) {
       console.warn('Auth error', err);

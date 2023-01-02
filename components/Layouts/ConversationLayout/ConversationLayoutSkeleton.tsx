@@ -37,8 +37,8 @@ export const ConversationLayoutSkeleton = () => {
         </div>
       </div>
       <div className={styles.skeletonBody}>
-        {[...Array(matches1090 ? 6 : 7)].map(() => (
-          <MessageSkeleton />
+        {[...Array(matches1090 ? 6 : 7)].map((_, index) => (
+          <MessageSkeleton key={index} />
         ))}
       </div>
       <div className={styles.skeletonFooter}>
