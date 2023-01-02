@@ -7,7 +7,7 @@ import { useAppSelector } from '../../../redux/hooks';
 import { selectUserData } from '../../../redux/slices/user';
 import { Message } from '../../Message';
 import { useConversations } from '../../../hooks/useConversations';
-import { useMediaQuery } from '@material-ui/core';
+import { Avatar, useMediaQuery } from '@material-ui/core';
 import { CloudinaryApi } from '../../../utils/api/CloudinaryApi';
 import { useMessages } from '../../../hooks/useMessages';
 import { Message as MessageType } from '../../../utils/api/types';
@@ -240,15 +240,19 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
     <>
       <div className={styles.conversationHeader}>
         <div className={styles.headerLeftSide}>
-          <img
-            src={
-              conversation?.receiver
-                ? conversation?.receiver?.avatarUrl
-                : conversation?.sender?.avatarUrl
-            }
-            alt="avatar"
-            className={styles.avatar}
-          />
+          {conversation?.receiver?.avatarUrl || conversation?.sender?.avatarUrl ? (
+            <img
+              src={
+                conversation?.receiver
+                  ? conversation?.receiver?.avatarUrl
+                  : conversation?.sender?.avatarUrl
+              }
+              alt="avatar"
+              className={styles.avatar}
+            />
+          ) : (
+            <Avatar />
+          )}
           <p>
             {matches480
               ? conversation?.receiver?.fullName.length > 8
