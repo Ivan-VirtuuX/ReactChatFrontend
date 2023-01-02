@@ -24,8 +24,6 @@ App.getInitialProps = wrapper.getInitialAppProps((store) => async ({ ctx, Compon
   try {
     const userData = await Api(ctx).user.getMe();
 
-    console.log(userData);
-
     store.dispatch(setUserData(userData));
   } catch (err) {
     console.warn(err);
