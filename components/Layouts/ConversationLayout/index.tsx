@@ -251,7 +251,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
               className={styles.avatar}
             />
           ) : (
-            <Avatar />
+            <Avatar style={{ marginRight: 10 }} />
           )}
           <p>
             {matches480
