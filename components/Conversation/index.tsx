@@ -122,12 +122,14 @@ export const Conversation: FC<ConversationProps> = ({
   };
 
   const onClickConversation = () => {
-    router.push(`/conversations/${conversationId}`);
+    if (id !== conversationId) {
+      router.push(`/conversations/${conversationId}`);
+    }
 
     if (matches1090) {
       setTimeout(() => {
         window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });
-      }, 500);
+      }, 250);
     }
   };
 
