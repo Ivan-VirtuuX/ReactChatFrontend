@@ -1,13 +1,16 @@
 import { useMediaQuery } from '@material-ui/core';
+import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { NextPage } from 'next/types';
 import { useEffect } from 'react';
 import ConversationsLayout from '../../components/Layouts/ConversationsLayout';
 import { useAppSelector } from '../../redux/hooks';
-import { selectUserData } from '../../redux/slices/user';
+import { selectUserData, setUserData } from '../../redux/slices/user';
+import { wrapper } from '../../redux/store';
 import styles from './Conversations.module.scss';
+import { Api } from '../../utils/api';
 
-const Conversations: NextPage = () => {
+const Conversations = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   const userData = useAppSelector(selectUserData);
@@ -38,5 +41,24 @@ const Conversations: NextPage = () => {
     </div>
   );
 };
+
+Conversations.getInitialProps = wrapper.getInitialAppProps(
+  (store) =>
+    async ({ ctx, Component }) => {
+      try {
+        const userData = await Api(ctx).user.getMe();
+
+        store.dispatch(setUserData(userData));
+      } catch (err) {
+        console.warn(err);
+      }
+
+      return {
+        pageProps: Component.getInitialProps
+          ? await Component.getInitialProps({ ...ctx, store })
+          : {},
+      };
+    },
+);
 
 export default Conversations;
