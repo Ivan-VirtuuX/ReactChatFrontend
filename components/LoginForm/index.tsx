@@ -39,7 +39,13 @@ export const LoginForm: FC<LoginFormProps> = ({ onOpenRegister }) => {
       });
       setErrorMessage('');
 
-      dispatch(setUserData(data));
+      dispatch(
+        setUserData({
+          userId: 'safasfasf',
+          avatarUrl: 'safsf',
+          fullName: 'virtuux',
+        }),
+      );
 
       router.push('/conversations');
     } catch (err) {
