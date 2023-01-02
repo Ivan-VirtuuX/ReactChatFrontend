@@ -7,7 +7,7 @@ import { Api } from '../utils/api';
 import { setUserData } from '../redux/slices/user';
 import { socket, SocketContext } from '../utils/context/SocketContext';
 
-const App = ({ Component, pageProps }: AppProps) => {
+function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
@@ -18,7 +18,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </SocketContext.Provider>
     </>
   );
-};
+}
 
 App.getInitialProps = wrapper.getInitialAppProps((store) => async ({ ctx, Component }) => {
   try {
