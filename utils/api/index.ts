@@ -16,7 +16,7 @@ export const Api = (ctx?: NextPageContext | GetServerSidePropsContext): ApiRetur
   const token = cookies.authToken;
 
   const instance = axios.create({
-    baseURL: 'https://reactchatbackend.onrender.com',
+    baseURL: 'https://reactchatbackend-production.up.railway.app',
     headers: {
       Authorization: 'Bearer ' + token,
     },
