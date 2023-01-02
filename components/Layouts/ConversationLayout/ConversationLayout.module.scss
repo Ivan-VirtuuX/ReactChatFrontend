@@ -146,9 +146,11 @@
         }
     }
 
-    @media(max-width:500px) {
-        svg {
-            width: 25px;
+    &:not(.closeImage) {
+        @media(max-width:500px) {
+            svg {
+                width: 25px;
+            }
         }
     }
 }
