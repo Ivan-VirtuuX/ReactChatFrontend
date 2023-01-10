@@ -183,16 +183,16 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   useEffect(() => {
     // conversation && conversation?.sender?.userId === userData?.id && delete conversation['sender'];
 
-    if (conversation) {
-      setConversation((current) => {
-        const copy = { ...current };
+    setConversation((current) => {
+      const copy = { ...current };
 
-        conversation?.sender?.userId === userData?.id && delete copy['sender'];
+      conversation?.sender?.userId === userData?.id && delete copy['sender'];
 
-        return copy;
-      });
-    }
+      return copy;
+    });
+  }, []);
 
+  useEffect(() => {
     if (!userData) {
       router.push('/');
     }
