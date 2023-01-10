@@ -181,18 +181,6 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   };
 
   useEffect(() => {
-    // conversation && conversation?.sender?.userId === userData?.id && delete conversation['sender'];
-
-    setConversation((current) => {
-      const copy = { ...current };
-
-      conversation?.sender?.userId === userData?.id && delete copy['sender'];
-
-      return copy;
-    });
-  }, []);
-
-  useEffect(() => {
     if (!userData) {
       router.push('/');
     }
@@ -248,11 +236,15 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
     return <ConversationLayoutSkeleton />;
   }
 
+  conversation?.sender?.userId === userData?.id
+    ? delete conversation['sender']
+    : delete conversation['receiver'];
+
   return (
     <>
       <div className={styles.conversationHeader}>
         <div className={styles.headerLeftSide}>
-          {conversation?.receiver?.avatarUrl ? (
+          {conversation?.receiver?.avatarUrl || conversation?.sender?.avatarUrl ? (
             <img
               src={
                 conversation?.receiver
