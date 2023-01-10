@@ -60,10 +60,6 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   const handleSubmitNewMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    onUpdateConversation();
-
-    handleUpdate(localMessages);
-
     try {
       setIsUploading(true);
 
@@ -99,6 +95,10 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
       console.warn(err);
     } finally {
       setIsUploading(false);
+
+      onUpdateConversation();
+
+      handleUpdate(localMessages);
     }
   };
 

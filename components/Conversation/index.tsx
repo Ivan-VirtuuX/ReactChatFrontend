@@ -191,7 +191,11 @@ export const Conversation: FC<ConversationProps> = ({
               {messages[messages.length - 1]?.text &&
               validator.isURL(messages[messages.length - 1]?.text) ? (
                 <div className={styles.imageMessage}>
-                  <p>Изображение</p>
+                  <p>
+                    {messages[messages.length - 1]?.sender?.userId === userData?.id
+                      ? 'Вы: Изображение'
+                      : 'Изображение'}
+                  </p>
                   <svg
                     width="15"
                     height="15"
@@ -219,6 +223,8 @@ export const Conversation: FC<ConversationProps> = ({
                 )
               ) : messages[messages.length - 1]?.text.length > 30 ? (
                 messages[messages.length - 1]?.text.slice(0, 10) + '...'
+              ) : messages[messages.length - 1]?.sender?.userId === userData?.id ? (
+                'Вы: ' + messages[messages.length - 1]?.text
               ) : (
                 messages[messages.length - 1]?.text
               )}

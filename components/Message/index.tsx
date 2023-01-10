@@ -103,7 +103,36 @@ export const Message: FC<MessageProps> = ({
           <Avatar src={sender.avatarUrl} />
           <div className={styles.leftSide}>
             <div>
-              <p>{sender?.fullName}</p>
+              <div className={styles.messageHeader}>
+                <p>{sender?.fullName}</p>
+                <p className={styles.createdAt}>
+                  {date?.getDate() === new Date().getDate() &&
+                  date?.getDay() === new Date().getDay()
+                    ? 'Сегодня в ' +
+                      date?.getHours() +
+                      ':' +
+                      (String(date.getMinutes()).length === 2
+                        ? date.getMinutes()
+                        : '0' + date.getMinutes())
+                    : Number(new Date().getDate()) !== date?.getDay()
+                    ? 'Вчера в ' +
+                      date?.getHours() +
+                      ':' +
+                      (String(date.getMinutes()).length === 2
+                        ? date.getMinutes()
+                        : '0' + date.getMinutes())
+                    : date.getDate() +
+                      ' ' +
+                      date.toLocaleString('default', { month: 'short' }) +
+                      ' ' +
+                      date.getHours() +
+                      ':' +
+                      (String(date.getMinutes()).length === 2
+                        ? date.getMinutes()
+                        : '0' + date.getMinutes())}
+                </p>
+              </div>
+
               {validator.isURL(text) ? (
                 <p
                   style={{
@@ -173,31 +202,6 @@ export const Message: FC<MessageProps> = ({
                 </p>
               )}
             </div>
-            <p className={styles.createdAt}>
-              {date?.getDate() === new Date().getDate() && date?.getDay() === new Date().getDay()
-                ? 'Сегодня в ' +
-                  date?.getHours() +
-                  ':' +
-                  (String(date.getMinutes()).length === 2
-                    ? date.getMinutes()
-                    : '0' + date.getMinutes())
-                : Number(new Date().getDate()) !== date?.getDay()
-                ? 'Вчера в ' +
-                  date?.getHours() +
-                  ':' +
-                  (String(date.getMinutes()).length === 2
-                    ? date.getMinutes()
-                    : '0' + date.getMinutes())
-                : date.getDate() +
-                  ' ' +
-                  date.toLocaleString('default', { month: 'short' }) +
-                  ' ' +
-                  date.getHours() +
-                  ':' +
-                  (String(date.getMinutes()).length === 2
-                    ? date.getMinutes()
-                    : '0' + date.getMinutes())}
-            </p>
           </div>
         </div>
       </div>

@@ -13,10 +13,11 @@
     p:nth-child(1) {
         font-size: 18px;
         font-weight: 700;
+
     }
 
     div {
-        flex: 1;
+        width: 100%;
     }
 
     img {
@@ -27,12 +28,18 @@
     }
 }
 
+.messageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .createdAt {
     color: #929292;
 }
 
 .image {
-    width: 100%;
+    width: 80%;
     border-radius: 13px;
 }
 
