@@ -243,6 +243,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
           {conversation?.receiver?.avatarUrl || conversation?.sender?.avatarUrl ? (
             <img
               src={
+                (conversation?.receiver.avatarUrl || conversation?.sender.avatarUrl) &&
                 conversation?.receiver
                   ? conversation?.receiver?.avatarUrl
                   : conversation?.sender?.avatarUrl
