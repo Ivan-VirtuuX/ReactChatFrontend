@@ -453,8 +453,8 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
             disabled={isUploading}
           />
           <button
-            disabled={isUploading || (!message && !attachedImageFormData)}
-            style={{ pointerEvents: message ? 'all' : 'none' }}>
+            disabled={isUploading || (!message && !preview)}
+            style={{ pointerEvents: message || preview ? 'all' : 'none' }}>
             <svg
               width="38"
               height="38"
