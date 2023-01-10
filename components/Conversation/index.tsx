@@ -29,12 +29,13 @@ export const Conversation: FC<ConversationProps> = ({
   onUpdateConversation,
 }) => {
   const [isCloseVisible, setIsCloseVisible] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [localMessages, setLocalMessages] = useState<Message[]>([]);
 
   const router = useRouter();
   const { id } = router.query;
 
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [localMessages, setLocalMessages] = useState<Message[]>([]);
+  const matches1090 = useMediaQuery('(max-width:1090px)');
 
   useEffect(() => {
     (async () => {
@@ -76,6 +77,18 @@ export const Conversation: FC<ConversationProps> = ({
     crossRef?.current?.animate(opacityUp, timing);
   }, [isCloseVisible]);
 
+  useEffect(() => {
+    matches1090 ? setIsCloseVisible(true) : setIsCloseVisible(false);
+  }, [matches1090]);
+
+  useEffect(() => {
+    if (matches1090) {
+      setTimeout(() => {
+        window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });
+      }, 250);
+    }
+  }, [id]);
+
   const userData = useAppSelector(selectUserData);
 
   const crossRef = useRef(null);
@@ -111,25 +124,19 @@ export const Conversation: FC<ConversationProps> = ({
     iterations: 1,
   };
 
-  const matches1090 = useMediaQuery('(max-width:1090px)');
-
   const onMouseLeave = () => {
-    crossRef?.current?.animate(opacityDown, timing);
+    if (!matches1090) {
+      crossRef?.current?.animate(opacityDown, timing);
 
-    setTimeout(() => {
-      setIsCloseVisible(false);
-    }, 200);
+      setTimeout(() => {
+        setIsCloseVisible(false);
+      }, 200);
+    }
   };
 
   const onClickConversation = () => {
     if (id !== conversationId) {
       router.push(`/conversations/${conversationId}`);
-    }
-
-    if (matches1090) {
-      setTimeout(() => {
-        window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });
-      }, 250);
     }
   };
 
@@ -189,7 +196,7 @@ export const Conversation: FC<ConversationProps> = ({
                   msgText
                 )
               ) : messages[messages.length - 1]?.text.length > 30 ? (
-                messages[messages.length - 1]?.text.slice(0, 30) + '...'
+                messages[messages.length - 1]?.text.slice(0, 10) + '...'
               ) : (
                 messages[messages.length - 1]?.text
               )}

@@ -7,10 +7,16 @@
     margin-left: 23px;
     color: #25182E;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
 
     p:nth-child(1) {
         font-size: 18px;
         font-weight: 700;
+    }
+
+    div {
+        flex: 1;
     }
 
     img {
@@ -19,6 +25,10 @@
             border-radius: 13px;
         }
     }
+}
+
+.createdAt {
+    color: #929292;
 }
 
 .image {
@@ -30,20 +40,21 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 17px;
     margin-top: 10px;
 
-    svg {
-        margin-right: 10px;
-        cursor: pointer;
-        width: 15px;
-        height: 15px;
-    }
 
     p {
-        font-size: 18px !important;
-        font-weight: 300 !important;
+        svg {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+        }
     }
+
+
 
     &:hover {
         background: #F5F5F5;
@@ -51,6 +62,12 @@
         border-radius: 13px;
         transition: all 0.3s ease-in-out !important;
     }
+}
+
+.text {
+    font-size: 18px !important;
+    font-weight: 300 !important;
+    overflow-wrap: anywhere;
 }
 
 .imageMessageActions {

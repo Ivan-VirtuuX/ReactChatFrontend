@@ -27,7 +27,7 @@ export type Message = {
   conversationId: string;
   sender?: ResponseUser;
   text: string;
-  createdAt?: string;
+  createdAt?: string | Date;
 };
 
 export type ConversationDto = {

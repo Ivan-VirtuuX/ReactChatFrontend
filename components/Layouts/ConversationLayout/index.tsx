@@ -76,6 +76,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
             conversationId: String(id),
             sender: { ...userData },
             text: secure_url,
+            createdAt: new Date(),
           });
 
           setAttachedImageFormData([]);
@@ -89,6 +90,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
           conversationId: String(id),
           sender: { ...userData },
           text: message,
+          createdAt: new Date(),
         });
 
         setMessage('');
