@@ -240,10 +240,9 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
     <>
       <div className={styles.conversationHeader}>
         <div className={styles.headerLeftSide}>
-          {conversation?.receiver?.avatarUrl || conversation?.sender?.avatarUrl ? (
+          {conversation?.receiver?.avatarUrl ? (
             <img
               src={
-                (conversation?.receiver.avatarUrl || conversation?.sender.avatarUrl) &&
                 conversation?.receiver
                   ? conversation?.receiver?.avatarUrl
                   : conversation?.sender?.avatarUrl
