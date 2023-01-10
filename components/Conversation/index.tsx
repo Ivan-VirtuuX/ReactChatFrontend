@@ -38,6 +38,7 @@ export const Conversation: FC<ConversationProps> = ({
   const { id } = router.query;
 
   const matches1090 = useMediaQuery('(max-width:1090px)');
+  const matches430 = useMediaQuery('(max-width:430px)');
 
   useEffect(() => {
     (async () => {
@@ -233,13 +234,25 @@ export const Conversation: FC<ConversationProps> = ({
         </div>
         <p style={{ fontSize: 18 }}>
           {date
-            ? date.getDate() +
-              ' ' +
-              date.toLocaleString('default', { month: 'short' }) +
-              ' ' +
-              date.getHours() +
-              ':' +
-              (String(date.getMinutes()).length === 2 ? date.getMinutes() : '0' + date.getMinutes())
+            ? matches430
+              ? date.getDate() +
+                '.' +
+                date.toLocaleString('default', { month: '2-digit' }) +
+                ' ' +
+                date.getHours() +
+                ':' +
+                (String(date.getMinutes()).length === 2
+                  ? date.getMinutes()
+                  : '0' + date.getMinutes())
+              : date.getDate() +
+                ' ' +
+                date.toLocaleString('default', { month: 'short' }) +
+                ' ' +
+                date.getHours() +
+                ':' +
+                (String(date.getMinutes()).length === 2
+                  ? date.getMinutes()
+                  : '0' + date.getMinutes())
             : ''}
         </p>
       </div>

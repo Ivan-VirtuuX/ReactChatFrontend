@@ -139,6 +139,8 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
 
   const onCloseImage = () => {
     setAttachedImageFormData([]);
+    setAttachedImage(undefined);
+    setIsSaveImage(false);
     setPreview('');
   };
 
@@ -238,7 +240,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
 
   conversation?.sender?.userId === userData?.id
     ? delete conversation['sender']
-    : delete conversation['receiver'];
+    : conversation?.receiver?.userId === userData?.id && delete conversation['receiver'];
 
   return (
     <>
@@ -450,7 +452,9 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
             placeholder="Сообщение..."
             disabled={isUploading}
           />
-          <button disabled={isUploading}>
+          <button
+            disabled={isUploading || !message}
+            style={{ pointerEvents: message ? 'all' : 'none' }}>
             <svg
               width="38"
               height="38"
