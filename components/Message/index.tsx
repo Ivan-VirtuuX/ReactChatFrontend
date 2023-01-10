@@ -174,11 +174,29 @@ export const Message: FC<MessageProps> = ({
               )}
             </div>
             <p className={styles.createdAt}>
-              {date?.getHours() +
-                ':' +
-                (String(date.getMinutes()).length === 2
-                  ? date.getMinutes()
-                  : '0' + date.getMinutes())}
+              {date?.getDate() === new Date().getDate() && date?.getDay() === new Date().getDay()
+                ? 'Сегодня в ' +
+                  date?.getHours() +
+                  ':' +
+                  (String(date.getMinutes()).length === 2
+                    ? date.getMinutes()
+                    : '0' + date.getMinutes())
+                : Number(new Date().getDate()) !== date?.getDay()
+                ? 'Вчера в ' +
+                  date?.getHours() +
+                  ':' +
+                  (String(date.getMinutes()).length === 2
+                    ? date.getMinutes()
+                    : '0' + date.getMinutes())
+                : date.getDate() +
+                  ' ' +
+                  date.toLocaleString('default', { month: 'short' }) +
+                  ' ' +
+                  date.getHours() +
+                  ':' +
+                  (String(date.getMinutes()).length === 2
+                    ? date.getMinutes()
+                    : '0' + date.getMinutes())}
             </p>
           </div>
         </div>
