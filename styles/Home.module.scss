@@ -125,6 +125,16 @@
       font-size: 68px;
     }
   }
+
+  @media(max-width:390px) {
+    p:nth-child(1) {
+      font-size: 27px;
+    }
+
+    p:nth-child(2) {
+      font-size: 58px;
+    }
+  }
 }
 
 .rightSide {

@@ -66,6 +66,10 @@
             @media(max-width: 415px) {
                 font-size: 53px !important;
             }
+
+            @media(max-width: 390px) {
+                font-size: 45px !important;
+            }
         }
     }
 
@@ -110,6 +114,10 @@
                 background-color: transparent !important;
             }
         }
+
+        @media(max-width: 400px) {
+            font-size: 25px !important;
+        }
     }
 
     button:nth-child(2) {
@@ -133,6 +141,12 @@
         @media(max-width: 550px) {
             width: 200px;
             font-size: 20px;
+        }
+
+        @media(max-width: 400px) {
+            height: 50px;
+            width: 170px;
+            font-size: 17px !important;
         }
     }
 }

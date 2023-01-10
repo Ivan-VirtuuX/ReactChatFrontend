@@ -58,6 +58,10 @@
             @media(max-width: 415px) {
                 font-size: 53px !important;
             }
+
+            @media(max-width: 390px) {
+                font-size: 45px !important;
+            }
         }
     }
 
@@ -124,6 +128,12 @@
         &:disabled {
             background-color: #D4D4D4 !important;
             color: #929292 !important;
+        }
+
+        @media(max-width: 400px) {
+            width: 110px;
+            height: 50px;
+            font-size: 22px !important;
         }
     }
 }
