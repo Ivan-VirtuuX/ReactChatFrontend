@@ -51,8 +51,6 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   const matches480 = useMediaQuery('(max-width:480px)');
   const matches505 = useMediaQuery('(max-width:505px)');
 
-  conversation?.sender?.userId === userData?.id && delete conversation['sender'];
-
   const { localMessages, setLocalMessages } = useMessages(id, isSave);
 
   const handleDeleteMessage = async (messageId: string) => {
@@ -183,6 +181,8 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   };
 
   useEffect(() => {
+    conversation && conversation?.sender?.userId === userData?.id && delete conversation['sender'];
+
     if (!userData) {
       router.push('/');
     }
