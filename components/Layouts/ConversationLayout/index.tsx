@@ -51,10 +51,9 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   const matches480 = useMediaQuery('(max-width:480px)');
   const matches505 = useMediaQuery('(max-width:505px)');
 
-  conversation &&
-    (conversation?.sender?.userId === userData?.id ||
-      conversation?.sender?.userId === userData?.userId) &&
-    delete conversation['sender'];
+  conversation && conversation?.sender?.userId === userData?.id
+    ? delete conversation['sender']
+    : delete conversation['receiver'];
 
   const { localMessages, setLocalMessages } = useMessages(id, isSave);
 
