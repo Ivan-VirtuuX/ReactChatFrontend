@@ -23,10 +23,14 @@ export const useMessages = (conversationId?: string | string[], isSave?: boolean
 
           setMessages(data);
 
-          setIsLoading(false);
+          if (data) {
+            setIsLoading(false);
+          }
         }
       } catch (err) {
         console.warn(err);
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, [conversationId, isSave]);
