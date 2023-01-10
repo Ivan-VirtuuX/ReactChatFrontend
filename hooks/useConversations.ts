@@ -11,6 +11,7 @@ export const useConversations = (conversationId?: string) => {
     (async () => {
       try {
         setIsLoading(true);
+
         if (conversationId) {
           const data = await Api().conversation.getOne(conversationId);
 

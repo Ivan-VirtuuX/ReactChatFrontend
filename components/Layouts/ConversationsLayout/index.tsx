@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useConversations } from '../../../hooks/useConversations';
 import { useMessages } from '../../../hooks/useMessages';
-import { Api } from '../../../utils/api';
 import { Conversation } from '../../Conversation';
 import { ConversationSkeleton } from '../../Conversation/ConversationSkeleton';
 import styles from './ConversationsLayout.module.scss';
@@ -14,9 +13,9 @@ interface ConversationLayoutProps {
 const ConversationsLayout: FC<ConversationLayoutProps> = ({ onUpdateConversation }) => {
   const [keyword, setKeyword] = useState('');
 
-  const { messages } = useMessages();
+  const { messages, isLoading } = useMessages();
 
-  const { conversations, isLoading } = useConversations();
+  const { conversations } = useConversations();
 
   return (
     <>
