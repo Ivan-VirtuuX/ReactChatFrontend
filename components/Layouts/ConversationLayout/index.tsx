@@ -242,6 +242,8 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
     }
   }, [image, attachedImage]);
 
+  console.log(conversation);
+
   if (isLoading) {
     return <ConversationLayoutSkeleton />;
   }
