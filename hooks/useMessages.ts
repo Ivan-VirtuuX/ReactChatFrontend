@@ -5,7 +5,7 @@ import { Message } from '../utils/api/types';
 export const useMessages = (conversationId?: string | string[], isSave?: boolean) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [localMessages, setLocalMessages] = useState<Message[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -15,11 +15,15 @@ export const useMessages = (conversationId?: string | string[], isSave?: boolean
         if (conversationId) {
           const data = await Api().message.getAll();
 
+          setIsLoading(false);
+
           setMessages(data.filter((message) => message.conversationId === conversationId));
 
           setLocalMessages(data.filter((message) => message.conversationId === conversationId));
         } else if (!conversationId) {
           const data = await Api().message.getAll();
+
+          setIsLoading(false);
 
           setMessages(data);
         }
