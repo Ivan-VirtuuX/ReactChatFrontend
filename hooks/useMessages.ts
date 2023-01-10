@@ -25,6 +25,9 @@ export const useMessages = (conversationId?: string | string[], isSave?: boolean
         }
       } catch (err) {
         console.warn(err);
+      } finally {
+        setIsLoading(false);
+      }
     })();
   }, [conversationId, isSave]);
 
