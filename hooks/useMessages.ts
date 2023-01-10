@@ -22,10 +22,6 @@ export const useMessages = (conversationId?: string | string[], isSave?: boolean
           const data = await Api().message.getAll();
 
           setMessages(data);
-
-          if (data) {
-            setIsLoading(false);
-          }
         }
       } catch (err) {
         console.warn(err);
