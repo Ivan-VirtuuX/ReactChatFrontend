@@ -194,8 +194,8 @@ export const Conversation: FC<ConversationProps> = ({
                 <div className={styles.imageMessage}>
                   <p>
                     {messages[messages.length - 1]?.sender?.userId === userData?.id
-                      ? 'Вы: Изображение'
-                      : 'Изображение'}
+                      ? 'Вы: Картинка'
+                      : 'Картинка'}
                   </p>
                   <svg
                     width="15"
