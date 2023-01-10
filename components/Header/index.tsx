@@ -168,13 +168,14 @@ export const Header = () => {
               />
               {isResultVisible &&
                 searchValue &&
-                users.filter((user) => user.fullName[0].toLowerCase() === searchValue.toLowerCase())
-                  .length > 0 && (
+                users.filter((user) =>
+                  user.fullName[0].toLowerCase().includes(searchValue[0].toLowerCase()),
+                ).length > 0 && (
                   <Paper className={styles.searchBlockPopup} ref={ref}>
                     <List>
                       {users
-                        .filter(
-                          (user) => user.fullName[0].toLowerCase() === searchValue.toLowerCase(),
+                        .filter((user) =>
+                          user.fullName[0].toLowerCase().includes(searchValue[0].toLowerCase()),
                         )
                         .map((user) => (
                           <Link key={user.userId} href={`/conversations/${conversationId}`}>

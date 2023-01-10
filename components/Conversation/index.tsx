@@ -8,6 +8,7 @@ import validator from 'validator';
 import styles from './Conversation.module.scss';
 import { Api } from '../../utils/api';
 import { useMediaQuery } from '@material-ui/core';
+import { ConversationSkeleton } from './ConversationSkeleton';
 
 interface ConversationProps {
   conversationId?: string;
@@ -31,6 +32,7 @@ export const Conversation: FC<ConversationProps> = ({
   const [isCloseVisible, setIsCloseVisible] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [localMessages, setLocalMessages] = useState<Message[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -39,25 +41,7 @@ export const Conversation: FC<ConversationProps> = ({
 
   useEffect(() => {
     (async () => {
-      if (conversationId) {
-        const data = await Api().message.getAll();
-
-        setMessages(data.filter((message) => message.conversationId === conversationId));
-
-        setLocalMessages(data.filter((message) => message.conversationId === conversationId));
-      } else if (!conversationId) {
-        const data = await Api().message.getAll();
-
-        setMessages(data);
-      }
-    })();
-  }, [onUpdateConversation]);
-
-  useEffect(() => {
-    (async () => {
-      if (updatedMessages) {
-        setMessages(updatedMessages.filter((message) => message.conversationId === conversationId));
-      } else {
+      try {
         if (conversationId) {
           const data = await Api().message.getAll();
 
@@ -69,6 +53,36 @@ export const Conversation: FC<ConversationProps> = ({
 
           setMessages(data);
         }
+      } catch (err) {
+        console.warn(err);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, [onUpdateConversation]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        if (updatedMessages) {
+          setMessages(
+            updatedMessages.filter((message) => message.conversationId === conversationId),
+          );
+        } else {
+          if (conversationId) {
+            const data = await Api().message.getAll();
+
+            setMessages(data.filter((message) => message.conversationId === conversationId));
+
+            setLocalMessages(data.filter((message) => message.conversationId === conversationId));
+          } else if (!conversationId) {
+            const data = await Api().message.getAll();
+
+            setMessages(data);
+          }
+        }
+      } catch (err) {
+        console.warn(err);
       }
     })();
   }, [conversationId, updatedMessages]);
@@ -151,6 +165,14 @@ export const Conversation: FC<ConversationProps> = ({
       router.push('/conversations');
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className={styles.conversationSkeleton}>
+        <ConversationSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div

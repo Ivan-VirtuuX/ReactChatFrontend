@@ -5,17 +5,13 @@ import { Message } from '../utils/api/types';
 export const useMessages = (conversationId?: string | string[], isSave?: boolean) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [localMessages, setLocalMessages] = useState<Message[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        setIsLoading(true);
-
         if (conversationId) {
           const data = await Api().message.getAll();
-
-          setIsLoading(false);
 
           setMessages(data.filter((message) => message.conversationId === conversationId));
 
@@ -23,9 +19,9 @@ export const useMessages = (conversationId?: string | string[], isSave?: boolean
         } else if (!conversationId) {
           const data = await Api().message.getAll();
 
-          setIsLoading(false);
-
           setMessages(data);
+
+          console.log(data);
         }
       } catch (err) {
         console.warn(err);

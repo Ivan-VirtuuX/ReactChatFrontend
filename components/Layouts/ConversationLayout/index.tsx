@@ -46,7 +46,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
 
   const { id } = router.query;
 
-  const { conversation, isLoading, setConversation } = useConversations(conversationId);
+  const { conversation, isLoading } = useConversations(conversationId);
 
   const matches480 = useMediaQuery('(max-width:480px)');
   const matches505 = useMediaQuery('(max-width:505px)');
@@ -231,8 +231,6 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
       setPreview(null);
     }
   }, [image, attachedImage]);
-
-  console.log(conversation);
 
   if (isLoading) {
     return <ConversationLayoutSkeleton />;

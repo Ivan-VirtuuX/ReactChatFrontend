@@ -141,3 +141,11 @@
         width: 50px !important;
     }
 }
+
+.conversationSkeleton {
+    min-width: 50%;
+    max-width: 473px;
+    height: 92px;
+    transition: all 0.2s ease-in-out;
+    margin-top: 20px;
+}
