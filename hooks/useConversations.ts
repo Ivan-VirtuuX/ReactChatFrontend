@@ -29,5 +29,5 @@ export const useConversations = (conversationId?: string) => {
     })();
   }, [conversationId]);
 
-  return { conversations, conversation, isLoading };
+  return { conversations, conversation, isLoading, setConversation };
 };

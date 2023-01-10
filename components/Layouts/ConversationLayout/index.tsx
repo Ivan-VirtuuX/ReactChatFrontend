@@ -46,7 +46,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
 
   const { id } = router.query;
 
-  const { conversation, isLoading } = useConversations(conversationId);
+  const { conversation, isLoading, setConversation } = useConversations(conversationId);
 
   const matches480 = useMediaQuery('(max-width:480px)');
   const matches505 = useMediaQuery('(max-width:505px)');
@@ -181,7 +181,17 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
   };
 
   useEffect(() => {
-    conversation && conversation?.sender?.userId === userData?.id && delete conversation['sender'];
+    // conversation && conversation?.sender?.userId === userData?.id && delete conversation['sender'];
+
+    if (conversation) {
+      setConversation((current) => {
+        const copy = { ...current };
+
+        conversation?.sender?.userId === userData?.id && delete copy['sender'];
+
+        return copy;
+      });
+    }
 
     if (!userData) {
       router.push('/');
