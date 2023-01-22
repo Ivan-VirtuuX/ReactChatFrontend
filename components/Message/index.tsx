@@ -124,7 +124,7 @@ export const Message: FC<MessageProps> = ({
                     : date.getDate() +
                       ' ' +
                       date.toLocaleString('default', { month: 'short' }) +
-                      ' ' +
+                      ' в ' +
                       date.getHours() +
                       ':' +
                       (String(date.getMinutes()).length === 2
