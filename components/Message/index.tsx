@@ -114,7 +114,9 @@ export const Message: FC<MessageProps> = ({
                       (String(date.getMinutes()).length === 2
                         ? date.getMinutes()
                         : '0' + date.getMinutes())
-                    : date?.getDay() + 1 === Number(new Date().getDay())
+                    : date?.getDay() + 1 === Number(new Date().getDay()) &&
+                      date?.getMonth() === Number(new Date().getMonth()) &&
+                      date?.getFullYear() === Number(new Date().getFullYear())
                     ? 'Вчера в ' +
                       date?.getHours() +
                       ':' +
