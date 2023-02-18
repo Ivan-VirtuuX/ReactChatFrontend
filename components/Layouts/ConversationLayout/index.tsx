@@ -260,7 +260,7 @@ const ConversationLayout: FC<ConversationLayoutProps> = ({
             <Avatar style={{ marginRight: 10 }} />
           )}
           <p>
-            {matches480
+            {matches480 && conversation?.receiver
               ? conversation?.receiver?.fullName.length > 8
                 ? conversation?.receiver?.fullName.slice(0, 5) + '...'
                 : conversation?.receiver?.fullName
